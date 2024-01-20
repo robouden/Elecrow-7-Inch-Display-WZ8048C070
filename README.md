@@ -20,6 +20,7 @@ The Elecrow 7 Inch Display with an ESP32-S3 is an inexpensive platform for any k
 - Display driver: EK9716BD3/EK73002ACGB
 - External power supply: DC 5V-2A
 - Interface: 1*TF Card Slot, 1* GPIO, 1*Speak, 1* UART1, 1*UART0
+- Sound interface: One MAX98357A (Pins: LRCLK 18, I2S_BCLK 42, I2S_SDIN 17)
 
 ## Resources
 [Generic Info by Elecrow](https://www.elecrow.com/esp32-display-7-inch-hmi-display-rgb-tft-lcd-touch-screen-support-lvgl.html)
@@ -226,7 +227,8 @@ public:
 ```
 
 ### Libraries
-[Lovyan GFX](https://github.com/lovyan03/LovyanGFX) needs to be included. For the audio examples I've also included [ESP32-audioI2S](https://github.com/schreibfaul1/ESP32-audioI2S) library. They are used in the *lib_deps* section of *platformio.ini*
+[Lovyan GFX](https://github.com/lovyan03/LovyanGFX) needs to be included. For the audio examples I've also included [ESP32-audioI2S](https://github.com/schreibfaul1/ESP32-audioI2S) library (as an alternative, the [ESP8266Audio](https://github.com/earlephilhower/ESP8266Audio) library can be used. 
+They are declared in the *lib_deps* section of *platformio.ini*
 
 ### platformio.ini
 Next step is to adapt "platformio.ini"
@@ -257,3 +259,12 @@ lib_deps =
 board_build.partitions = huge_app.csv
 ```
 
+## Some details about the program
+*main.cpp* :
+- Starts the LovyanGFX lib and then runs the complete set of examples given in the LovyanGFX documentation, these are included in *drawExamples()*
+- setup() then sets up the audio pinout and volume,
+- connects to the Wifi (needed for audio streams from the internet) and to the SD card (for examples from SD)
+- forces mono since the Elecrow display only has a mono amplifier
+- does any of a selection of audio demos, using connections to radio stations, test files from the web, or from the SD card
+  (! if you want to play the examples from the SD card as predefined, the card should contain "test.wav" and "demo01.mp3" .. "demo11.mp3" in it's root directory!). The demo files are repeated endlessly
+- Touch read is active during the whole runtime.
