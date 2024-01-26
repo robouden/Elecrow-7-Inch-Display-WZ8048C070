@@ -1,7 +1,7 @@
 # Elecrow-7-Inch-Display-WZ8048C070
 Basic Programming of Elecrow 7 Inch Display ( WZ8048C070 Wizee-ESP33 ) with PlatformIO
 
-The supplier claims compatibility with LVGL . They provide a demo application that is delivered with the display, and a [tutorial](https://www.elecrow.com/wiki/images/5/5b/Tutorial-WZ8048C070.pdf) on how to compile and upload it to the display. They are using the [GFX Library for Arduino](https://github.com/moononournation/Arduino_GFX) by moonournation, the [TAMC_GT911](https://github.com/TAMCTec/gt911-arduino) library for the touch screen and [the LVGL (Light and Versatile Graphics Library](https://lvgl.io/) for the GUI.
+The display is compatible with LVGL . They provide a demo application that is delivered with the display, and a [tutorial](https://www.elecrow.com/wiki/images/5/5b/Tutorial-WZ8048C070.pdf) on how to compile and upload it to the display. They are using the [GFX Library for Arduino](https://github.com/moononournation/Arduino_GFX) by moonournation, the [TAMC_GT911](https://github.com/TAMCTec/gt911-arduino) library for the touch screen and [the LVGL (Light and Versatile Graphics Library](https://lvgl.io/) for the GUI.
 LVGL is certainly powerful, but requires quite a bit of design work using their "SquareLine" GUI designer tool
 
 An simpler path, is to just use a graphics library and do the graphics yourself. I have done this, and am just using [Lovyan GFX](https://github.com/lovyan03/LovyanGFX). There is some english [Documentation](https://lovyangfx.readthedocs.io/en/master/), however not going into too much detail.
@@ -34,6 +34,8 @@ The main steps for getting software using LovYanGFX onto the 7" display are:
 - copy the driver file *LGFX_ESP32S3_Elecrow70.hpp* into your project, and include it in the source code
 - Modify platformio.ini as directed (or just copy the provided example file)
 The example should then compile.
+
+** Note: The Elecrow display is not automatically in upload mode. In order to get it ready to upload, you have to keep the "Boot" button on the back pressed during power on or reset **
 
 ### Board definition file
 The board definition file "esp32-s3-devkitc-1-myboard.json" needs to be put into the correct directory. This can be the platformio boards directory in *Users\<user>\.platformio\platforms\espressif32\boards\* or in any directory that the *boards_dir* , as defined in platformio.ini, points to. 
