@@ -26,7 +26,7 @@ The Elecrow 7 Inch Display with an ESP32-S3 is an inexpensive platform for any k
 [Generic Info by Elecrow](https://www.elecrow.com/esp32-display-7-inch-hmi-display-rgb-tft-lcd-touch-screen-support-lvgl.html)
 [Elecrow Wiki for the 7" display](https://www.elecrow.com/wiki/index.php?title=ESP32_Display_7.0%27%27_Intelligent_Touch_Screen_Wi-Fi%26BLE_800*480_HMI_Display)
 
-## Setup for Platformio - LovyanGFX only
+## Setup for Platformio using LovyanGFX only (without LVGL)
 
 The main steps for getting software using LovYanGFX onto the 7" display are:
 - copy the board definition file *esp32-s3-devkitc-1-myboard.json* into your project and reference it in *platformio.ini*
@@ -35,7 +35,7 @@ The main steps for getting software using LovYanGFX onto the 7" display are:
 - Modify platformio.ini as directed (or just copy the provided example file)
 The example should then compile.
 
-** Note: The Elecrow display is not automatically in upload mode. In order to get it ready to upload, you have to keep the "Boot" button on the back pressed during power on or reset **
+**Note: The Elecrow display is not automatically in upload mode. In order to get it ready to upload, you have to keep the "Boot" button on the back pressed during power on or reset**
 
 ### Board definition file
 The board definition file "esp32-s3-devkitc-1-myboard.json" needs to be put into the correct directory. This can be the platformio boards directory in *Users\<user>\.platformio\platforms\espressif32\boards\* or in any directory that the *boards_dir* , as defined in platformio.ini, points to. 
