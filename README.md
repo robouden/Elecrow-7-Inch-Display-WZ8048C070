@@ -35,7 +35,8 @@ The main steps for getting software using LovYanGFX onto the 7" display are:
 - Modify platformio.ini as directed (or just copy the provided example file)
 The example should then compile.
 
-**Note: The Elecrow display is not automatically in upload mode. In order to get it ready to upload, you have to keep the "Boot" button on the back pressed during power on or reset**
+**Note: Earlier versions of the Elecrow display are not automatically in upload mode. In order to get it ready to upload, you have to keep the "Boot" button on the back pressed during power on or reset 
+(Newer versions do not require this)**
 
 ### Board definition file
 The board definition file "esp32-s3-devkitc-1-myboard.json" needs to be put into the correct directory. This can be the platformio boards directory in *Users\<user>\.platformio\platforms\espressif32\boards\* or in any directory that the *boards_dir* , as defined in platformio.ini, points to. 
